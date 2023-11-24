@@ -1,4 +1,7 @@
-class customer {
+// Note; Need to Differentiate between a New user and a Existing User.
+// New User will need to have ID Generated, and Be Added to the Database.
+// Existing User will NOT need those Functions Generated. 
+class user {
     constructor(firstName, lastName, birthDate, email, userName, password){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -10,6 +13,7 @@ class customer {
         this.saveUser();
         this.activeBets = [];
         this.historicalBets = [];
+        this.funds = 0;
     }
 
     generateUserId(){
