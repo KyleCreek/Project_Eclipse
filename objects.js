@@ -25,13 +25,11 @@ class user {
         // This Function Will Commit the Customer to the Database
     }
 
-    makeBet(){
-        // This function will allow the user to make a bet. 
-    }
 }
 
 class bet {
     constructor(description, firstBettor, secondBettor, odds, stakes, maxBettors){
+        this.betId = this.generateBetId();
         this.description = description;
         this.firstBettor = firstBettor;
         this.secondBettor = secondBettor;
@@ -43,7 +41,7 @@ class bet {
     generateBetId(){
         // Function will generate a Unique User Id that will be stored in a database.
         // All Bet IDs MUST be Unique. 
+        return 10;
     }
 }
 
-export { user, bet};
