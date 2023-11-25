@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Bet</title>
+  </head>
+
+  <body>
+    <form id="create-bet-form">
+      <!-- Start Create Bet Form -->
+
+      <!-- Bet Description -->
+      <div class="form-group">
+        <label for="bet-description">Bet Description</label>
+        <input
+          id="bet-description"
+          type="text-area"
+          maxlength = "1000"
+          required
+        />
+      </div>
+
+      <!-- Odds -->
+      <div class="form-group">
+        <label for="odds">Betting Odds</label>
+        <input
+          id="odds"
+          type="text"
+          required
+        />
+      </div>
+
+      <!-- Stakes -->
+      <div class="form-group">
+        <label for="stakes">Stakes</label>
+        <input
+          id="stakes"
+          type="number"
+          required
+        />
+      <!-- Max Bettors -->
+      <div class="form-group">
+        <label for="max-bettors">Max Bettors</label>
+        <input
+          id="max-bettors"
+          type="number"
+          required
+        />
+        <!-- Submit Button-->
+        <input
+          type="submit"
+        />
+      </div> 
+    </form>
+    <script src="create_bet.js"></script>
+    <script src="objects.js"></script>
+  </body>
+</html>
