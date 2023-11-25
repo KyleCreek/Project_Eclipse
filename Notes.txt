@@ -4,6 +4,7 @@ Known To Dos:
 - Determine how to Control User Informat
     - Log In Create a cookie?
     - Verification of User Unique ID
+- Use localstorage to gather User Information. 
 
 
 Unorganized Thoughts:
