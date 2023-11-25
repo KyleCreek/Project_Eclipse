@@ -1,0 +1,9 @@
+- Need a Scalable Database
+- Develop w/o database until all attributes are determined. Then add database back end.
+- Better2 Is intantiated as N/A 
+- Create Bet Page
+- Login Page
+- New User Page
+- Bets have an expiration date of some how
+- CSS to make bets appear like slips.
+- Bet's get  a max accept attribute. 

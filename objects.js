@@ -31,12 +31,13 @@ class user {
 }
 
 class bet {
-    constructor(description, firstBettor, secondBettor, odds, stakes){
+    constructor(description, firstBettor, secondBettor, odds, stakes, maxBettors){
         this.description = description;
         this.firstBettor = firstBettor;
         this.secondBettor = secondBettor;
         this.odds = odds;
         this.stakes = stakes;
+        this.maxBettors = maxBettors
     }
 
     generateBetId(){
@@ -44,3 +45,5 @@ class bet {
         // All Bet IDs MUST be Unique. 
     }
 }
+
+export { user, bet};
