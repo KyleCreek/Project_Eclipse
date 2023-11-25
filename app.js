@@ -3,29 +3,26 @@ const app = express();
 const path = require('path');
 const PORT = 8080;
 
-app.set('view engine', 'html');
 // Define routes
-
 app.get('/', (req, res) => {
     //res.sendFile()
 })
 
 // Create Bet GET
 app.get('/create_bet', (req, res) =>{
-    res.sendFile('./views/create_bet.html');
+    debugger;
+    res.sendFile(path.join(__dirname, 'views/create_bet.html'));
     console.log('create bet');
 })
 
 // Create User GET
 app.get('/create_user', (req, res) => {
-    //res.render('create_user');
-    console.log('create user');
+    res.sendFile(path.join(__dirname, 'views/create_user.html'));
 })
 
 // Browse GET
 app.get('/browse', (req, res) => {
-    //res.render('browse');
-    console.log('browse');
+    res.sendFile(path.join(__dirname, 'views/browse.html'));
 })
 
 
