@@ -5,6 +5,8 @@ Known To Dos:
     - Log In Create a cookie?
     - Verification of User Unique ID
 - Use localstorage to gather User Information. 
+- Use GET and POST requests to control the DOM
+    - Control all Javascript with the Express AP. 
 
 
 Unorganized Thoughts:
