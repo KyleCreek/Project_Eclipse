@@ -1,3 +1,12 @@
+Known To Dos:
+- Determine Back End Database Type
+- Finish Object attributes
+- Determine how to Control User Informat
+    - Log In Create a cookie?
+    - Verification of User Unique ID
+
+
+Unorganized Thoughts:
 - Need a Scalable Database
 - Develop w/o database until all attributes are determined. Then add database back end.
 - Better2 Is intantiated as N/A 

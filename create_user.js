@@ -13,6 +13,7 @@ form.addEventListener("click", (e) => {
     
     const newUser = new user(fName, lName, bDate, email, userName, password);
 
+    // Commit the User to the Database; 
 });
 
 function validateUserName(userNameInput){
