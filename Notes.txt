@@ -7,7 +7,7 @@ Known To Dos:
 - Use localstorage to gather User Information. 
 - Use GET and POST requests to control the DOM
     - Control all Javascript with the Express AP. 
-
+    - All DOM Manipulation will be in the POST Requests. 
 
 Unorganized Thoughts:
 - Need a Scalable Database
