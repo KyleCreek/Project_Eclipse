@@ -1,0 +1,18 @@
+-- Create Database
+CREATE DATABASE [database name];
+
+-- Create Tables
+
+1. Execute "USE [database name];"
+2. CREATE TABLE [table name]
+(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    firstName VARCHAR (150) NOT NULL,
+    ...
+);
+
+
+-- Input Information
+
+INSERT INTO [table name] (comma, separated, list, of, attributes) VALUES
+(comma, separated, list, of values);

@@ -27,3 +27,6 @@ Unorganized Thoughts:
 - Add some information about the betting trends for the specific gambling event on any of the "Create Bet" Pages.
 - Add a PRIVATE attribute to the Profile that includes the Venmo Handle. Make it such that it is private to other users but NOT private to the Other Apps.
 - Is there a way to compress the data in a database to compress the data? Might not b possible if I need to directly access the information. 
+- Users have the ability to cite their favorite teams. Page can promote bets of their favorite teams.
+- It would be cool to find a way to "tail the Sharps" and follow their bets.
+- Peer to Peer Betting. Market Website as the Limewire of Betting. 
