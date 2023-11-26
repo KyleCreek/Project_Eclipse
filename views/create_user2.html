@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create User</title>
+  </head>
+
+  <body>
+    <form id="create-user-form" action="/create_user" method="post">
+      <!-- Start Create Bet Form -->
+
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="first-name">First Name: </label>
+        <input
+          id="first-name"
+          type="text"
+          name="first-name"
+          required
+        />
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="last-name">Last Name: </label>
+        <input
+          id="last-name"
+          type="text"
+          name="last-name"
+          required
+        />
+      </div>
+
+      <!-- Birth Date -->
+      <div class="form-group">
+        <label for="birth-date">Birth Date:</label>
+        <input
+          id="birth-date"
+          type="date"
+          name="birth-date"
+          required
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          id="email"
+          type="text"
+          name="email"
+          required
+        />
+      </div>
+      
+      <!-- User Name -->
+      <div class="form-group">
+        <label for="user-name">User Name:</label>
+        <input
+          id="user-name"
+          type="text"
+          name="user-name"
+          required
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          id="password"
+          type="text"
+          name="password"
+          required
+        />
+      </div>
+
+        <!-- Submit Button-->
+        <button type="submit">Create User</button>
+      </div> 
+    </form>
+    <script src="create_bet.js"></script>
+    <script src="objects.js"></script>
+  </body>
+</html>
