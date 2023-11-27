@@ -2,6 +2,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mysql = require('mysql2');
+
+// Define Constants for SQL Tables TO support for Revisionse
+const USER_TABLE = 'users';
+const WAGER_TABLE = 'wagers';
+
+// Define SQL Connection
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Password.7',
+    database: 'TESTUSERS',
+  });
 
 // Define the Application and PORT to Listen On
 const app = express();
@@ -44,9 +57,15 @@ app.post('/create_user', (req, res) =>{
     // -- Future Problem: Validate Unique User Name
 
     // Submit the User to the Database. 
-    const sqlInsert = `INSERT INTO users (firstName, lastName, birthDate, email, userName, password, funds) VALUES
-    (${firstName},${lastName},${birthDate},${email},${userName},${password}, 100);`;
+    // -Note: Need to Change the Table Schema to Include the Email. 
+    // Note 2: Also Might need to change the "Funds" To be the Venmo Handle. 
+    const sqlInsert = `INSERT INTO ${USER_TABLE} (firstName, lastName, birthDate, userName, password, funds) VALUES
+    ('${firstName}','${lastName}','${birthDate}','${userName}','${password}', 100);`;
 
+    // Call the the Data Base to Add the User
+    sqlQuery(sqlInsert);
+
+    res.redirect('views/login.html');
 
 });
 
@@ -62,13 +81,59 @@ app.get('/browse', (req, res) => {
 
 // Login GET
 app.get('/login', (req,res)=>{
-    res.send
-    File(path.join(__dirname, 'views/login.html'));
+    res.sendFile(path.join(__dirname, 'views/login.html'));
 })
 
 // Login POST
+app.post('/login', (req, res) => {
+    // Define Constants
+    const user = req.body['username'];
+    const pass = req.body['password'];
+    
+    // Make a call to the data base with the username and password
+    const sqlInput = `SELECT * from ${USER_TABLE} WHERE userName = '${user}';`;
+    const sqlResponse = sqlQuery(sqlInput);
+    
+    console.log('sql, response', typeof(sqlResponse));
+    res.sendFile(path.join(__dirname, 'views/login.html'));
+
+});
+
+
+function sqlQuery(sqlText){
+    let sqlReturn;
+// Connect to the Database
+    connection.connect((err) => {
+        if (err) {
+            console.error('Error connecting to MySQL:', err);
+            return;
+        }
+        console.log('Connected to MySQL database');
+    });
+      
+      // Perform MySQL operations here...
+    connection.query(sqlText, (err, results) => {
+        if (err) {
+            console.error('Error executing MySQL query:', err);
+            return;
+          }
+          sqlReturn = results;
+          console.log(results);
+        });
+    // Close Connection When Listening Closes
+    connection.end((err) => {
+        if (err) {
+            console.error('Error closing MySQL connection:', err);
+            return;
+        }
+        console.log('MySQL connection closed');
+    });
+    return sqlReturn;
+};
+
 
 // Initialize Application to Start listening. 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+

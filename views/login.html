@@ -5,23 +5,31 @@
   </head>
 
   <body>
-    <form>
-      <div id="login-form">
+    <form id="login-form" action="/login" method="post">
+      <div>
         Please Log In to Your Account
         <label for="username">User Name:</label>
         <input
             id="username"
             type="text"
+            name="username"
             required/>
         <label for="password">Password:</label>
         <input
             id="password"
             type="text"
+            name="password"
             required
             />
       </div>
-
+      <!-- Submit Button-->
+      <button type="submit">Log In</button>
     </form>
+
+    <div>
+      New Users Click Here to Create an Account:
+      <a href="/create_user">Create Account</a>
+    </div>
 
     <script src="browse.js"></script>
   </body>
