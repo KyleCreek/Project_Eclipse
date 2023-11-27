@@ -21,6 +21,9 @@ const app = express();
 const PORT = 8080;
 // Middleware to parse the body of POST requests --> This was Reccomended By a ChatGPT Snippet. 
 app.use(bodyParser.urlencoded({ extended: true }));
+// This line is to help serve the Static Files in the js 
+// Note: Need to learn WHY this works, but for now, it just does. 
+app.use(express.static('public'));
 
 
 // Define routes
@@ -37,6 +40,9 @@ app.get('/create_bet', (req, res) =>{
 })
 
 // Create Bet POST
+app.post('/create_bet', (req, res) => {
+
+});
 
 
 // Create User GET
@@ -62,6 +68,7 @@ app.post('/create_user', (req, res) =>{
     const sqlInsert = `INSERT INTO ${USER_TABLE} (firstName, lastName, birthDate, userName, password, funds) VALUES
     ('${firstName}','${lastName}','${birthDate}','${userName}','${password}', 100);`;
 
+    // Might also need to create an entirely new table to house all of the bets. 
     // Call the the Data Base to Add the User
     sqlQuery(sqlInsert);
 
@@ -73,7 +80,16 @@ app.post('/create_user', (req, res) =>{
 
 // Browse GET
 app.get('/browse', (req, res) => {
+
+    // This might be the best place to perform the SQL Query.
+    // From here we can pass the Information as Context to the HTML
+    // and all the DOM has to do is go through the list and then
+    // Display the information. 
     res.sendFile(path.join(__dirname, 'views/browse.html'));
+
+    // Note: a 'reject' should simply affect the DOM, an 'accept'
+    // Should send a POST request because there is going to be DATABASE Transactions 
+    // for the bettor, and bet Object. 
 })
 
 // Browse POST
@@ -82,6 +98,19 @@ app.get('/browse', (req, res) => {
 // Login GET
 app.get('/login', (req,res)=>{
     res.sendFile(path.join(__dirname, 'views/login.html'));
+
+    /*
+    When a Bet is accepted:
+        1. Sufficient Funds Must Be Calculated
+        2. Funds Must Be With Drawn from BOTH Accounts and sent to Purgatory (Maybe just 1, The Bettor 1 accounts should be withdrawn upon bet creation)
+        3. Bettor1 Profile and Bets Must be Updated
+        4. Bettor 2 Profile and Bets Must be Updated
+        5. Page will Refresh back to Browse Page
+    Note: Need Error Accounting for all of the above.  
+
+    */
+
+
 })
 
 // Login POST
@@ -99,9 +128,9 @@ app.post('/login', (req, res) => {
 
 });
 
-
-function sqlQuery(sqlText){
-    let sqlReturn;
+// -- Note: This entire function is going to need to be reworked to account for
+// Asynchronous Calls to the Database. 
+async function sqlQuery(sqlText){
 // Connect to the Database
     connection.connect((err) => {
         if (err) {
@@ -112,13 +141,12 @@ function sqlQuery(sqlText){
     });
       
       // Perform MySQL operations here...
-    connection.query(sqlText, (err, results) => {
+    dbCall = await connection.promise().query(sqlText, (err, results) => {
         if (err) {
             console.error('Error executing MySQL query:', err);
             return;
           }
-          sqlReturn = results;
-          console.log(results);
+          console.log("sqlQuery Results:", results);
         });
     // Close Connection When Listening Closes
     connection.end((err) => {
@@ -128,7 +156,7 @@ function sqlQuery(sqlText){
         }
         console.log('MySQL connection closed');
     });
-    return sqlReturn;
+    return dbCall;
 };
 
 
