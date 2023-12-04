@@ -11,9 +11,8 @@ class user {
         this.password = password;
         this.userID = generateUserID();
         this.saveUser();
-        this.activeBets = [];
-        this.historicalBets = [];
-        this.funds = 0;
+        // Need A Field for what Will Ultimately be Payment Information
+        // The Payment information might ned to be it's own object. 
     }
 
     generateUserId(){
@@ -26,22 +25,44 @@ class user {
     }
 
 }
-
-class bet {
-    constructor(description, firstBettor, secondBettor, odds, stakes, maxBettors){
-        this.betId = this.generateBetId();
-        this.description = description;
-        this.firstBettor = firstBettor;
-        this.secondBettor = secondBettor;
-        this.odds = odds;
-        this.stakes = stakes;
-        this.maxBettors = maxBettors
+/*
+Represents a wager that can be made by an individual
+-- Note: Initial Product Offering will only Allow for ONE to One Ratio for bettors and
+bets to simplify development. 
+*/
+*/
+// Test Purposes -- Define the Wager Object and Create Wagers
+class wager {
+  // EQC Bet Slip Information
+  // Description
+  // Odds
+  // Ticket Cost
+  // To Win
+  // To Collect
+  constructor(owner, description, odds, ticketCost){
+      // ID Should be Unique and generated
+      this.id = this.generateId();
+      this.owner = owner;
+      this.description = description;
+      this.ticketCost = ticketCost;
+      this.odds = odds;
+      this.winnings = this.calculateWinnings(this.ticketCost, this.odds);
+  }
+  // Method Generates a Custom ID for the Wager.
+  generateId(){
+    // Going to need a way to Make this Unique. 
+    return Math.floor(Math.random() * 100);
+  }
+  // Method Calculates the Winnings of the second party;
+  calculateWinnings(ticketCost, odds){
+    // Favorite
+    if (odds > 0){
+      //Potential profit = Wager / (Odds/100)
+      return ticketCost / (odds/100);
+    // Under Dog
+    } else{
+      //Potential profit = Wager x (Odds/100)
+      return ticketCost * (odds/100);
     }
-
-    generateBetId(){
-        // Function will generate a Unique User Id that will be stored in a database.
-        // All Bet IDs MUST be Unique. 
-        return 10;
-    }
+  }
 }
-
