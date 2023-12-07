@@ -38,3 +38,11 @@ function viewWager(wagerObject){
     displayDiv.append(wagerDiv);
   }
   
+  // This is a Good Interim Function to Generate an ID
+// For Mass Production, This maay need to be revised. 
+function generateID(){
+  const timestamp = new Date().getTime();
+  const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
+  const uniqueId = `${timestamp}-${random}`;
+  return uniqueId;
+}

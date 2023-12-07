@@ -1,3 +1,55 @@
+// Using this area to Define the Objects Because I'm Too Dumb to KNow how to 
+// properly import and Export at this time. 
+// -- Start Object Definitions
+// Defines the Wager Object
+class wager {
+    constructor(owner, description, ticketCost){
+        this.id = this.generateId();
+        this.owner = owner;
+        this.description = description;
+        this.ticketCost = ticketCost;
+        this.available = true;
+    }
+        
+      generateId(){
+        const timestamp = new Date().getTime();
+        const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
+        const uniqueId = `${timestamp}-${random}`;
+        return uniqueId;
+      }
+    };
+
+// Defines the User Object
+class user {
+    constructor(firstName, lastName, birthDate, email, userName, password, venmoAccount){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.userName = userName;
+        this.password = password;
+        this.userID = this.generateID();
+        this.venmoAccount = venmoAccount;
+        this.saveUser();
+        // Need A Field for what Will Ultimately be Payment Information
+        // The Payment information might ned to be it's own object. 
+    }
+    generateID(){
+      const timestamp = new Date().getTime();
+      const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
+      const uniqueId = `${timestamp}-${random}`;
+      return uniqueId;
+    }
+}
+
+// -- Start Function Definitions 
+
+
+
+
+
+// -- Begin Definition of Application and End Points
+
 // Define the Required Modules. 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -31,16 +83,24 @@ app.get('/', (req, res) => {
     //res.sendFile()
 })
 
-// Create Bet GET
-app.get('/create_bet', (req, res) =>{
-    debugger;
-    res.sendFile(path.join(__dirname, 'views/create_bet.html'));
-    //const description = document.getElementById('bet-description').value;
-    //console.log(description);
+// Create Wager Get Statement
+app.get('/create_wager', (req, res) =>{
+    res.sendFile(path.join(__dirname, 'views/create_wager.html'));
 })
 
-// Create Bet POST
-app.post('/create_bet', (req, res) => {
+// Create Wager POST
+app.post('/create_wager', (req, res) => {
+    console.log(req.body);
+    // Validate Input Logic Here
+
+    // Create an Instance of a Bet Object
+    //const newWager = new wager()
+
+    // After Validation, Submit Make a Database Call to submit user
+
+    // Return something to the user that let's them know that the
+    // Wager was placed successfully.
+    res.sendFile(path.join(__dirname, 'views/create_wager.html'));
 
 });
 

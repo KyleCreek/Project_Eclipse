@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Wager</title>
+  </head>
+
+  <body>
+    <form id="create-wager-form" action="/create_wager" method="post">
+      <!-- Start Create Bet Form -->
+
+      <!-- Bet Description -->
+      <div class="form-group">
+        <label for="wager-description">Wager Description</label>
+        <input
+          name="wager-description"
+          type="text-area"
+          maxlength = "1000"
+          required
+        />
+      <!-- Ticket Cost Description -->
+      <div class="form-group">
+        <label for="ticket-cost">Wager Description</label>
+        <input
+          name="ticket-cost"
+          type="number"
+          required
+        />
+      </div>
+        <!-- Submit Button-->
+        <Button type='submit'>Submit Wager</Button>
+      </div> 
+    </form>
+  </body>
+</html>
